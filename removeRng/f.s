@@ -1,3 +1,5 @@
+;Remove characters with codes from a to b, a < b
+
 section .text
 global f
 f:
