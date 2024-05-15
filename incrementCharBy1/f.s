@@ -1,3 +1,5 @@
+;Increment every char in string
+
 section .text
 global f
 f:
