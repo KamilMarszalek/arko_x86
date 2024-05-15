@@ -1,4 +1,4 @@
-;Remove characters with codes from a to b, a < b
+;Remove every n-th character
 
 section .text
 global f
