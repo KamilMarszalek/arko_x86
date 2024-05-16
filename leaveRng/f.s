@@ -13,3 +13,6 @@ f:
 begin:
     mov cl, [eax]
     test cl, cl
+    jz end
+    cmp cl, byte ebx
+    jl skip
