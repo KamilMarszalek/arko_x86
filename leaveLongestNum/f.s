@@ -31,8 +31,11 @@ reset_counter:
     xor esi, esi
     jmp begin
 update:
-    mov ebx, eax ;beginning of seq
-    sub ebx, edi
+    ;mov ebx, eax ;beginning of seq
+    ;sub ebx, edi
+    neg edi
+    lea ebx, [eax + edi]
+    neg edi
     xor esi, esi
     jmp begin
 save:
