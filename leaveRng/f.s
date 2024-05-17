@@ -8,6 +8,10 @@ f:
     mov eax, [ebp + 8] ; string
     mov bl, [ebp + 12] ; a
     mov cl, [ebp + 16] ; b
+    cmp bl, cl
+    jle skip_swap
+    xchg bl, cl
+skip_swap:
     mov edx, eax
 begin:
     mov ch, [eax]
