@@ -5,14 +5,31 @@ f:
     push ebp
     mov ebp, esp
     push ebx
-    push esi
-    push edi
     mov eax, [ebp + 8] ; string
-    mov ebx, [ebp + 12] ; a
-    mov esi, [ebp + 16] ; b
+    mov bl, [ebp + 12] ; a
+    mov cl, [ebp + 16] ; b
+    mov edx, eax
 begin:
-    mov cl, [eax]
-    test cl, cl
+    mov ch, [eax]
+    cmp ch, 0
     jz end
-    cmp cl, byte ebx
+    cmp ch, bl
     jl skip
+    cmp ch, cl
+    jg skip
+    jmp save
+save:
+    mov [edx], ch
+    inc edx
+    inc eax
+    jmp begin
+skip:
+    inc eax
+    jmp begin
+end:
+    mov [edx], byte 0
+    pop ebx
+    mov esp, ebp
+    pop ebp 
+    ret
+
