@@ -10,6 +10,10 @@ f:
     mov     esi, [ebp+8]
     mov     cl, byte [ebp+12]
     mov     dl, byte [ebp+16]
+    cmp     cl, dl
+    jle     skip_swap
+    xchg    cl, dl
+skip_swap:
     mov     edi, esi
 begin:  
     mov     al, [esi]
