@@ -37,6 +37,8 @@ rem_num:
     mov eax, ebx
     add ebx, edx
 loop:
+    cmp edx, 0
+    jz end
     mov cl, [ebx]
     mov [eax], cl
     cmp cl, 0
