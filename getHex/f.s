@@ -71,8 +71,7 @@ hex_up:
 hex_low:
     sub ecx, 32
 inner:
-    lea ecx, [ecx*4]
-    lea ecx, [ecx*4]
+    sal ecx, 4
     inc edi
     cmp edi, edx
     jz adding
