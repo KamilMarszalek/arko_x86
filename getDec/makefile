@@ -12,4 +12,4 @@ main.o:	main.c
 f.o:	f.s
 		nasm -f elf f.s
 clean:
-		rm -rf *.o f
+		rm -rf *.o f debug
