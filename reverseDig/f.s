@@ -27,9 +27,9 @@ begin:
     cmp cl, '9'
     jg next
 inner:
-    mov ch, [ebx]
     cmp ebx, eax
-    jz end
+    jle end
+    mov ch, [ebx]
     cmp ch, '0'
     jl before
     cmp ch, '9'
