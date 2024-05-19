@@ -33,8 +33,9 @@ not_num:
     inc eax
     jmp begin
 pre_eval:
+    mov eax, 0xffffffff
     test ebx, ebx
-    jz no_num_end
+    jz epilog
     xor eax, eax
 eval:
     dec ebx
@@ -60,13 +61,7 @@ end:
     movzx ecx, cl
     sub ecx, 48
     add eax, ecx
-    pop edi
-    pop ebx
-    mov esp, ebp
-    pop ebp
-    ret
-no_num_end:
-    mov eax, 0xffffffff
+epilog:
     pop edi
     pop ebx
     mov esp, ebp
