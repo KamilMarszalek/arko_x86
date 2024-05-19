@@ -6,14 +6,12 @@ f:
     push ebp
     mov ebp, esp
     push ebx
-    push esi
     push edi
     xor ebx, ebx
-    xor esi, esi
     mov eax, [ebp + 8]
 begin:
     mov cl, [eax]
-    cmp cl, 0
+    test cl, cl
     jz pre_eval
     cmp cl, '0'
     jl not_num
@@ -24,7 +22,7 @@ num:
     inc ebx
     inc eax
     mov cl, [eax]
-    cmp cl, 0
+    test cl, cl
     jz pre_eval
     cmp cl, '0'
     jl pre_eval
@@ -35,12 +33,12 @@ not_num:
     inc eax
     jmp begin
 pre_eval:
-    cmp ebx, 0
+    test ebx, ebx
     jz no_num_end
     xor eax, eax
 eval:
     dec ebx
-    cmp ebx, 0
+    test ebx, ebx
     jz end
     xor edi, edi
     mov cl, [edx]
@@ -63,7 +61,6 @@ end:
     sub ecx, 48
     add eax, ecx
     pop edi
-    pop esi
     pop ebx
     mov esp, ebp
     pop ebp
@@ -71,7 +68,6 @@ end:
 no_num_end:
     mov eax, 0xffffffff
     pop edi
-    pop esi
     pop ebx
     mov esp, ebp
     pop ebp
