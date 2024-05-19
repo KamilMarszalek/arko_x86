@@ -35,6 +35,8 @@ not_num:
     inc eax
     jmp begin
 pre_eval:
+    cmp ebx, 0
+    jz no_num_end
     xor eax, eax
 eval:
     dec ebx
@@ -65,7 +67,11 @@ end:
     mov esp, ebp
     pop ebp
     ret
-    
-
-
-    
+no_num_end:
+    mov eax, 0xffffffff
+    pop edi
+    pop esi
+    pop ebx
+    mov esp, ebp
+    pop ebp
+    ret
