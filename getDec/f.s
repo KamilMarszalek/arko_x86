@@ -46,8 +46,7 @@ eval:
     movzx ecx, cl
     sub ecx, 48
 inner:
-    lea ecx, [ecx*2]
-    imul ecx, 5
+    imul ecx, 10
     inc edi
     cmp edi, ebx
     jz adding
