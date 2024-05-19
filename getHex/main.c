@@ -6,6 +6,6 @@ int main(int argc, char* argv[]){
         printf("Arg missing\n");
     }
     unsigned int answer = f(argv[1]);
-    printf("%X\n", answer);
+    printf("%u\n", answer);
     return 0;
 }

@@ -21,6 +21,10 @@ begin:
     cmp cl, 'A'
     jl not_num
     cmp cl, 'F'
+    jle num
+    cmp cl, 'a'
+    jl not_num
+    cmp cl, 'f'
     jg not_num
     mov ebx, eax
 num:
@@ -36,6 +40,10 @@ num:
     cmp cl, 'A'
     jl pre_eval
     cmp cl, 'F'
+    jle num
+    cmp cl, 'a'
+    jl pre_eval
+    cmp cl, 'f'
     jg pre_eval
     jmp num
 not_num:
@@ -56,8 +64,12 @@ eval:
     sub ecx, 48
     cmp ecx, 16
     jl inner
-hex:
+hex_up:
     sub ecx, 7
+    cmp ecx, 16
+    jl inner
+hex_low:
+    sub ecx, 32
 inner:
     lea ecx, [ecx*4]
     lea ecx, [ecx*4]
@@ -75,8 +87,12 @@ end:
     sub ecx, 48
     cmp ecx, 16
     jl add_end
-hex_end:
+hex_upper_end:
     sub ecx, 7
+    cmp ecx, 16
+    jl add_end
+hex_lower_end:
+    sub ecx, 32
 add_end:
     add eax, ecx
 epilog:
