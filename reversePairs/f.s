@@ -1,3 +1,5 @@
+; Swap characters in pairs.
+
 section .text
 global f
 
